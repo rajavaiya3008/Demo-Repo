@@ -7,7 +7,7 @@ import { todoSlice } from "../slices/todo";
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['todo'], // Only persist the 'form' slice of state
+    whitelist: ['todo'], // Only persist the 'todo' slice of state
   };
 
 const rootReducer = combineReducers({
