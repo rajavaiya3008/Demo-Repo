@@ -13,6 +13,9 @@ function App() {
   const pushTodo = () => {
     dispatch(addTodo({id:3,name:currTodo}))
   }
+  const logout = () => {
+    dispatch({type:'LOGOUT'})
+  }
 
   return (
     <div className="">
@@ -25,6 +28,7 @@ function App() {
       onChange={(e) => handleTodo(e)}
       />
       <button onClick={pushTodo}>Add</button>
+      <button onClick={logout}>Logout</button>
       {
         todoItems?.map((item,i) => {
           return <p key={i}>{item.name}</p>

@@ -10,9 +10,21 @@ const persistConfig = {
     whitelist: ['todo'], // Only persist the 'todo' slice of state
   };
 
-const rootReducer = combineReducers({
-    todo:todoSlice.reducer
-})
+// const rootReducer = combineReducers({
+//     todo:todoSlice.reducer
+// })
+
+const appReducer = combineReducers({
+  todo: todoSlice.reducer,
+});
+
+const rootReducer = (state, action) => {
+  if (action.type === 'LOGOUT') {
+    // Return undefined to trigger reinitialization of the state
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
